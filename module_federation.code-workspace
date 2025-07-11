@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "todo_list"
+		},
+		{
+			"path": "blog"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}

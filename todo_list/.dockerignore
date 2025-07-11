@@ -1,0 +1,5 @@
+node_modules/
+.vscode/
+.__mf__temp/
+*.log
+.env
