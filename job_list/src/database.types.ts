@@ -21,6 +21,7 @@ export type Database = {
           enrollments: number
           id: number
           title: string
+          type: Database["public"]["Enums"]["JOB_TYPE"] | null
         }
         Insert: {
           created_at?: string
@@ -28,6 +29,7 @@ export type Database = {
           enrollments?: number
           id?: number
           title: string
+          type?: Database["public"]["Enums"]["JOB_TYPE"] | null
         }
         Update: {
           created_at?: string
@@ -35,6 +37,7 @@ export type Database = {
           enrollments?: number
           id?: number
           title?: string
+          type?: Database["public"]["Enums"]["JOB_TYPE"] | null
         }
         Relationships: []
       }
@@ -46,7 +49,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      JOB_TYPE: "engineer" | "manager" | "director"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -173,6 +176,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      JOB_TYPE: ["engineer", "manager", "director"],
+    },
   },
 } as const

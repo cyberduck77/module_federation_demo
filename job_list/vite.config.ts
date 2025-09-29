@@ -15,10 +15,11 @@ export default defineConfig(({ mode }) => {
         name: 'joblist',
         filename: 'remoteEntry.js',
         exposes: {
-          './store': './src/store.ts',
-          './VanillaJobs': './src/components/VanillaJobs.js',
-          './VanillaAdd': './src/components/VanillaAdd.js',
+          './Enrollments': './src/components/Enrollments.vue',
+          './Search': './src/components/Search.vue',
+          './VanillaEnrollments': './src/components/VanillaEnrollments.js',
           './VanillaSearch': './src/components/VanillaSearch.js',
+          './store': './src/store.ts',
         },
         shared: ['vue'],
       })
@@ -37,7 +38,10 @@ export default defineConfig(({ mode }) => {
       strictPort: true,
     },
     build: {
+      modulePreload: false,
       target: 'esnext', // Enable top-level await support
+      minify: false,
+      cssCodeSplit: false
     }
   }
 })

@@ -1,18 +1,16 @@
 <template>
   <header class="app-header">
-    <h1>タスク一覧</h1>
+    <h1>求人情報管理</h1>
   </header>
 
   <main>
     <Search />
-    <Add />
     <Jobs />
   </main>
 </template>
 
 <script setup lang="ts">
 import Search from './components/Search.vue';
-import Add from './components/Add.vue';
 import Jobs from './components/Jobs.vue';
 </script>
 

@@ -1,10 +1,8 @@
 import { load } from "joblist/store";
-import mountJobs from "joblist/VanillaJobs";
-import mountAdd from "joblist/VanillaAdd";
+import mountEnrollments from "joblist/VanillaEnrollments";
 import mountSearch from "joblist/VanillaSearch";
 
-mountJobs('#jobs');
-mountAdd('#add');
+mountEnrollments('#enrollments');
 mountSearch('#search');
 
-load('job_list');
+load();

@@ -7,6 +7,9 @@
 			"path": "blog"
 		},
 		{
+			"path": "advertisement"
+		},
+		{
 			"path": "."
 		}
 	],

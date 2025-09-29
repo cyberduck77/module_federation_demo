@@ -1,6 +1,7 @@
 import './assets/main.css'
 
-import { load } from './store'
+import { selectType, load } from 'joblist/store'
+selectType('engineer')
 load()
 
 import { createApp } from 'vue'
