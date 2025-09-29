@@ -78,7 +78,7 @@
             <div class="content-section">
                 <h3>ここにタスク一覧が表示されます。</h3>
 
-                <div id="todos"></div>
+                <div id="jobs"></div>
             </div>
         </div>
     </main>

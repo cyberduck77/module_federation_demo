@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
             federation({
                 name: 'blog',
                 remotes: {
-                    todolist: 'http://localhost:8080/assets/remoteEntry.js',
+                    joblist: 'http://localhost:8080/assets/remoteEntry.js',
                 },
             }),
         ],

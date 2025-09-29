@@ -4,5 +4,5 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { load } from './store'
 
-load('todo_list')
+load()
 createApp(App).mount('#app')

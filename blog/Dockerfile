@@ -15,7 +15,7 @@ COPY . .
 RUN npm run build
 
 # Stage 3: PHP runtime + Nginx
-FROM php:8.2-fpm-alpine
+FROM php:8.2-fpm-alpine as production
 
 # Install system dependencies
 RUN apk add --no-cache bash nginx supervisor libpng libpng-dev libjpeg-turbo-dev libwebp-dev zlib-dev libzip-dev oniguruma-dev icu-dev \

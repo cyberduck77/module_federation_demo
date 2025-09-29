@@ -1,10 +1,10 @@
-import { load } from "todolist/store";
-import mountTodos from "todolist/VanillaTodos";
-import mountAdd from "todolist/VanillaAdd";
-import mountSearch from "todolist/VanillaSearch";
+import { load } from "joblist/store";
+import mountJobs from "joblist/VanillaJobs";
+import mountAdd from "joblist/VanillaAdd";
+import mountSearch from "joblist/VanillaSearch";
 
-mountTodos('#todos');
+mountJobs('#jobs');
 mountAdd('#add');
 mountSearch('#search');
 
-load('todo_list');
+load('job_list');

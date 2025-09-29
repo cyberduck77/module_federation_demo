@@ -12,11 +12,11 @@ export default defineConfig(({ mode }) => {
       vue(),
       vueDevtools(),
       federation({
-        name: 'todolist',
+        name: 'joblist',
         filename: 'remoteEntry.js',
         exposes: {
           './store': './src/store.ts',
-          './VanillaTodos': './src/components/VanillaTodos.js',
+          './VanillaJobs': './src/components/VanillaJobs.js',
           './VanillaAdd': './src/components/VanillaAdd.js',
           './VanillaSearch': './src/components/VanillaSearch.js',
         },

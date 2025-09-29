@@ -6,14 +6,14 @@
   <main>
     <Search />
     <Add />
-    <Todos />
+    <Jobs />
   </main>
 </template>
 
 <script setup lang="ts">
 import Search from './components/Search.vue';
 import Add from './components/Add.vue';
-import Todos from './components/Todos.vue';
+import Jobs from './components/Jobs.vue';
 </script>
 
 <style scoped>

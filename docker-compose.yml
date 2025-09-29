@@ -1,7 +1,7 @@
 services:
-  todolist:
+  joblist:
     build:
-      context: ./todo_list
+      context: ./job_list
       dockerfile: Dockerfile
     environment:
       - PREFIX_PORT=8080
