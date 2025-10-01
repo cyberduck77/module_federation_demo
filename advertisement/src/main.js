@@ -1,5 +1,3 @@
-import './assets/main.css'
-
 import { selectType, load } from 'joblist/store'
 selectType('engineer')
 load()

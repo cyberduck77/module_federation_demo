@@ -6,11 +6,29 @@ services:
     environment:
       - PREFIX_PORT=8080
     ports:
-      - "8080:8080"
+      - 8080:8080
+    develop:
+      watch:
+        - action: rebuild
+          path: ./job_list
+          ignore:
+           - node_modules/
 
   blog:
     build:
       context: ./blog
       dockerfile: Dockerfile
     ports:
-      - "8000:80"
+      - 8000:80
+    develop:
+      watch:
+        - action: sync
+          path: ./blog
+          target: /var/www/html
+          ignore:
+            - node_modules/
+            - vendor/
+        - action: rebuild
+          path: ./blog/composer.json
+        - action: rebuild
+          path: ./blog/package.json

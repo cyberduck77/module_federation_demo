@@ -1,5 +1,3 @@
-import './assets/main.css'
-
 import { load } from './store'
 load()
 
