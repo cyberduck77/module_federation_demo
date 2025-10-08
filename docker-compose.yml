@@ -1,12 +1,11 @@
+name: windows_module_federation
 services:
   joblist:
     build:
       context: ./job_list
       dockerfile: Dockerfile
-    environment:
-      - PREFIX_PORT=8080
     ports:
-      - 8080:8080
+      - ${JOBLIST_PORT}:80
     develop:
       watch:
         - action: rebuild
@@ -14,12 +13,12 @@ services:
           ignore:
            - node_modules/
 
-  blog:
+  advertisement:
     build:
-      context: ./blog
+      context: ./advertisement
       dockerfile: Dockerfile
     ports:
-      - 8000:80
+      - ${ADVERTISEMENT_PORT}:80
     develop:
       watch:
         - action: sync
@@ -32,3 +31,53 @@ services:
           path: ./blog/composer.json
         - action: rebuild
           path: ./blog/package.json
+
+  blog:
+    build:
+      context: ./blog
+      dockerfile: Dockerfile
+    environment:
+      - DB_CONNECTION=mysql
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=${MYSQL_DATABASE:-blog_db}
+      - DB_USERNAME=${MYSQL_USER:-blog_user}
+      - DB_PASSWORD=${MYSQL_PASSWORD:-blog_password}
+    ports:
+      - ${BLOG_PORT}:80
+    depends_on:
+      db:
+        condition: service_healthy
+    develop:
+      watch:
+        - action: sync
+          path: ./blog
+          target: /var/www/html
+          ignore:
+            - node_modules/
+            - vendor/
+        - action: rebuild
+          path: ./blog/composer.json
+        - action: rebuild
+          path: ./blog/package.json
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-blog_db}
+      MYSQL_USER: ${MYSQL_USER:-blog_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-blog_password}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mysql_data:
+    driver: local

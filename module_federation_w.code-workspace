@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"name": "job_list",
+			"path": "job_list"
+		},
+		{
+			"name": "advertisement",
+			"path": "advertisement"
+		},
+		{
+			"name": "blog",
+			"path": "blog"
+		},
+		{
+			"name": "module_federation_demo",
+			"path": "."
+		}
+	],
+	"settings": {}
+}

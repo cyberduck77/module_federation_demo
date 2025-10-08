@@ -47,11 +47,12 @@ RUN chown -R www-data:www-data /var/www/html \
 # Copy Nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copy Supervisor config (optional for queue workers/schedule)
-# COPY docker/supervisord.conf /etc/supervisord.conf
+# Copy entrypoint script
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Expose ports
 EXPOSE 80
 
-# Start Nginx and PHP-FPM via supervisord
-CMD ["sh", "-c", "php-fpm & nginx -g 'daemon off;'"]
+# Use entrypoint script to handle migrations
+ENTRYPOINT ["entrypoint.sh"]

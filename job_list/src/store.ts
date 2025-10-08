@@ -22,7 +22,7 @@ export const store = reactive<Store>({
   dateFilter: "",
 });
 
-let searchTimeout: NodeJS.Timeout | null = null;
+let searchTimeout: number | null = null;
 
 export const selectType = (type: "engineer" | "manager" | "director" | null): void => {
   store.typeFilter = type
