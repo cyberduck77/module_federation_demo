@@ -9,6 +9,8 @@
       <option value="director">ディレクター</option>
     </select>
     <button @click="addJob" class="add-button">追加</button>
+    <input type="text" id="company_name" name="company_name" placeholder="会社名" v-model="newJob.company_name"
+      class="job-input company-name-input" />
     <textarea id="description" name="description" placeholder="説明" v-model="newJob.description"
       class="job-input description-textarea"></textarea>
   </div>
@@ -19,6 +21,10 @@
         <div class="job-main">
           <span class="job-title">{{ job.title }}</span>
           <span class="job-date">{{ formatDate(job.created_at) }}</span>
+        </div>
+        <div class="job-sub">
+          <div class="job-company-name">会社名: {{ job.company_name }}</div>
+          <div class="job-enrollments">応募数: {{ job.enrollments }} 名</div>
         </div>
         <div class="job-description">{{ job.description }}</div>
         <div class="job-delete">
@@ -63,24 +69,20 @@ const formatDate = (isoString: string): string => {
   margin-bottom: 1rem;
   width: 100%;
 }
-
 .job-input {
   padding: 0.5rem;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
 .title-input {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
 }
-
 .type-select {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
 }
-
 .add-button {
   grid-column: 3 / 4;
   grid-row: 1 / 2;
@@ -92,46 +94,20 @@ const formatDate = (isoString: string): string => {
   border-radius: 4px;
   cursor: pointer;
 }
-
 .add-button:hover {
   background-color: #45a049;
 }
-
+.company-name-input {
+  grid-column: 1 / span 3;
+  grid-row: 2 / 3;
+}
 .description-textarea {
   grid-column: 1 / span 3;
-  /* Span across all 2 columns */
-  grid-row: 2 / span 1;
+  grid-row: 3 / span 1;
   min-height: 80px;
-  /* Double height of the first row */
   resize: vertical;
 }
 
-@media (max-width: 768px) {
-  .add-job-grid {
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: auto auto auto auto;
-  }
-
-  .title-input {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-  }
-
-  .type-select {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-  }
-
-  .add-button {
-    grid-column: 1 / 3;
-    grid-row: 3 / 4;
-  }
-
-  .description-textarea {
-    grid-column: 1 / 3;
-    grid-row: 2 / 3;
-  }
-}
 .jobs-list {
   margin-top: 1rem;
 }
@@ -143,6 +119,14 @@ const formatDate = (isoString: string): string => {
   background: #fafafa;
 }
 .job-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.job-sub {
   display: flex;
   justify-content: space-between;
   align-items: center;

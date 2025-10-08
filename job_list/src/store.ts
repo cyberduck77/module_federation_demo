@@ -13,24 +13,18 @@ export interface Store {
 export const store = reactive<Store>({
   jobs: [],
   newJob: {
-    type: null,
     title: "",
+    company_name: "",
     description: "",
+    type: null,
   },
   typeFilter: null,
-  searchText: "",
   dateFilter: "",
+  searchText: "",
 });
-
-let searchTimeout: number | null = null;
 
 export const selectType = (type: "engineer" | "manager" | "director" | null): void => {
   store.typeFilter = type
-  load()
-}
-
-export const search = (text: string): void => {
-  store.searchText = text
   load()
 }
 
@@ -39,12 +33,19 @@ export const selectDate = (date: string): void => {
   load()
 }
 
+export const search = (text: string): void => {
+  store.searchText = text
+  load()
+}
+
+let searchTimeout: number | null = null;
+
 export const load = (): void => {
   if (searchTimeout) {
     clearTimeout(searchTimeout)
   }
 
-  searchTimeout = setTimeout(async () => {
+  searchTimeout = setTimeout(() => {
     let query = supabase
     .from('jobs')
     .select('*')
@@ -56,7 +57,7 @@ export const load = (): void => {
 
     // Apply search filter if search text exists
     if (store.searchText.trim()) {
-      query = query.or(`title.ilike.%${store.searchText}%,description.ilike.%${store.searchText}%`)
+      query = query.or(`title.ilike.%${store.searchText}%,description.ilike.%${store.searchText}%,company_name.ilike.%${store.searchText}%`)
     }
 
     // Apply date filter if date is selected
@@ -65,9 +66,11 @@ export const load = (): void => {
         .lt('created_at', new Date(new Date(store.dateFilter).getTime() + 24 * 60 * 60 * 1000).toISOString())
     }
 
-    const { data: jobs, error } = await query
-    if (error) return
-    store.jobs = jobs ?? []
+    query
+    .then(({ data: jobs, error }) => {
+      if (error) return
+      store.jobs = jobs ?? []
+    })
   }, 300)
 };
 

@@ -3,7 +3,7 @@ import { supabase } from "./client"
 
 export const useApis = () => {
   const addJob = async (): Promise<void> => {
-    if (!store.newJob.title || !store.newJob.description || !store.newJob.type) return
+    if (!store.newJob.title || !store.newJob.description || !store.newJob.type || !store.newJob.company_name) return
     const { data: jobs, error } = await supabase
       .from('jobs')
       .insert(store.newJob)
@@ -11,6 +11,7 @@ export const useApis = () => {
     if (error) return
     store.newJob = {
       title: "",
+      company_name: "",
       description: "",
       type: null,
     }

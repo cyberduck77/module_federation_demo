@@ -95,32 +95,27 @@ const openContactForm = () => {
   padding: 4rem 2rem;
   text-align: center;
 }
-
 .hero-content {
   max-width: 800px;
   margin: 0 auto;
 }
-
 .hero-title {
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
-
 .hero-subtitle {
   font-size: 1.3rem;
   margin-bottom: 2rem;
   opacity: 0.9;
 }
-
 .hero-badges {
   display: flex;
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
 }
-
 .badge {
   background: rgba(255,255,255,0.2);
   padding: 0.5rem 1rem;
@@ -134,14 +129,12 @@ const openContactForm = () => {
   padding: 4rem 2rem;
   background: #f8f9fa;
 }
-
 .features-section h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
   color: #333;
 }
-
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -149,7 +142,6 @@ const openContactForm = () => {
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .feature-card {
   background: white;
   padding: 2rem;
@@ -158,22 +150,18 @@ const openContactForm = () => {
   text-align: center;
   transition: transform 0.3s ease;
 }
-
 .feature-card:hover {
   transform: translateY(-5px);
 }
-
 .feature-icon {
   font-size: 3rem;
   margin-bottom: 1rem;
 }
-
 .feature-card h3 {
   font-size: 1.3rem;
   margin-bottom: 1rem;
   color: #333;
 }
-
 .feature-card p {
   color: #666;
   line-height: 1.6;
@@ -185,27 +173,23 @@ const openContactForm = () => {
   padding: 4rem 2rem;
   margin: 0 auto;
 }
-
 .jobs-section h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: #333;
 }
-
-/* Jobs grid container */
 .jobs-grid {
   max-width: 1200px;
   margin: 2rem auto 0;
   padding: 0 1rem;
 }
 
-/* Enrollments component styling */
+/* Enrollmentsスタイル */
 .jobs-section :deep(.jobs-list) {
   margin: 0;
   padding: 0;
 }
-
 .jobs-section :deep(.jobs-list ul) {
   list-style: none;
   padding: 0;
@@ -214,7 +198,6 @@ const openContactForm = () => {
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
 }
-
 .jobs-section :deep(.job-item) {
   background: white;
   padding: 2rem;
@@ -224,26 +207,21 @@ const openContactForm = () => {
   border: 1px solid #f0f0f0;
   margin-bottom: 2rem;
 }
-
 .jobs-section :deep(.job-item:hover) {
   transform: translateY(-5px);
 }
-
 .jobs-section :deep(.job-main) {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1.5rem;
   gap: 1rem;
 }
-
 .jobs-section :deep(.job-title) {
   font-size: 1.4rem;
   font-weight: bold;
   color: #333;
   line-height: 1.3;
 }
-
 .jobs-section :deep(.job-date) {
   font-size: 0.85rem;
   color: #888;
@@ -252,21 +230,23 @@ const openContactForm = () => {
   border-radius: 20px;
   white-space: nowrap;
 }
-
+.jobs-section :deep(.job-company-name) {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
 .jobs-section :deep(.job-description) {
   color: #666;
   line-height: 1.6;
   margin-bottom: 2rem;
   white-space: pre-wrap;
 }
-
 .jobs-section :deep(.job-enroll) {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
-
 .jobs-section :deep(.job-enrollments) {
   font-size: 0.9rem;
   color: #666;
@@ -275,7 +255,6 @@ const openContactForm = () => {
   border-radius: 20px;
   font-weight: 500;
 }
-
 .jobs-section :deep(.job-enroll-button) {
   padding: 0.8rem 1.5rem !important;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
@@ -288,12 +267,10 @@ const openContactForm = () => {
   transition: all 0.3s ease;
   white-space: nowrap;
 }
-
 .jobs-section :deep(.job-enroll-button:hover) {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
-
 .jobs-section :deep(.empty-message) {
   color: #999;
   text-align: center;
@@ -304,7 +281,6 @@ const openContactForm = () => {
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
-
 .jobs-description {
   text-align: center;
   font-size: 1.1rem;
@@ -322,25 +298,21 @@ const openContactForm = () => {
   padding: 4rem 2rem;
   text-align: center;
 }
-
 .cta-section h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
-
 .cta-section p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
   opacity: 0.9;
 }
-
 .cta-buttons {
   display: flex;
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
 }
-
 .cta-primary, .cta-secondary {
   padding: 1rem 2rem;
   font-size: 1.1rem;
@@ -350,23 +322,19 @@ const openContactForm = () => {
   transition: all 0.3s ease;
   font-weight: bold;
 }
-
 .cta-primary {
   background: white;
   color: #4facfe;
 }
-
 .cta-primary:hover {
   background: #f0f0f0;
   transform: translateY(-2px);
 }
-
 .cta-secondary {
   background: transparent;
   color: white;
   border: 2px solid white;
 }
-
 .cta-secondary:hover {
   background: white;
   color: #4facfe;
@@ -378,49 +346,45 @@ const openContactForm = () => {
   .hero-title {
     font-size: 2rem;
   }
-  
   .hero-subtitle {
     font-size: 1.1rem;
   }
-  
   .features-section h2,
   .jobs-section h2,
   .cta-section h2 {
     font-size: 2rem;
   }
-  
   .cta-buttons {
     flex-direction: column;
     align-items: center;
   }
-  
   .cta-primary, .cta-secondary {
     width: 100%;
     max-width: 300px;
   }
-  
-  /* Enrollments responsive styles */
+
+  /* Enrollmentsスタイル */
   .jobs-section :deep(.jobs-list ul) {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
   .jobs-section :deep(.job-item) {
     padding: 1.5rem;
   }
-  
   .jobs-section :deep(.job-main) {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+    margin-bottom: 1.5rem;
   }
-  
+  .jobs-section :deep(.job-company-name) {
+    display: none;
+  }
   .jobs-section :deep(.job-enroll) {
     flex-direction: column;
     align-items: stretch;
     gap: 1rem;
   }
-  
   .jobs-section :deep(.job-enroll-button) {
     width: 100%;
   }
