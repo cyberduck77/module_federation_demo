@@ -19,41 +19,15 @@ services:
       dockerfile: Dockerfile
     ports:
       - ${ADVERTISEMENT_PORT}:80
+    depends_on:
+      joblist:
+        condition: service_started
     develop:
       watch:
         - action: rebuild
           path: ./advertisement
           ignore:
             - node_modules/
-
-  blog:
-    build:
-      context: ./blog
-      dockerfile: Dockerfile
-    environment:
-      - DB_CONNECTION=mysql
-      - DB_HOST=db
-      - DB_PORT=3306
-      - DB_DATABASE=${MYSQL_DATABASE:-blog_db}
-      - DB_USERNAME=${MYSQL_USER:-blog_user}
-      - DB_PASSWORD=${MYSQL_PASSWORD:-blog_password}
-    ports:
-      - ${BLOG_PORT}:80
-    depends_on:
-      db:
-        condition: service_healthy
-    develop:
-      watch:
-        - action: sync
-          path: ./blog
-          target: /var/www/html
-          ignore:
-            - node_modules/
-            - vendor/
-        - action: rebuild
-          path: ./blog/composer.json
-        - action: rebuild
-          path: ./blog/package.json
 
   db:
     image: mysql:8.0
@@ -71,6 +45,37 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+  blog:
+    build:
+      context: ./blog
+      dockerfile: Dockerfile
+    environment:
+      - DB_CONNECTION=mysql
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=${MYSQL_DATABASE:-blog_db}
+      - DB_USERNAME=${MYSQL_USER:-blog_user}
+      - DB_PASSWORD=${MYSQL_PASSWORD:-blog_password}
+    ports:
+      - ${BLOG_PORT}:80
+    depends_on:
+      db:
+        condition: service_healthy
+      joblist:
+        condition: service_started
+    develop:
+      watch:
+        - action: sync
+          path: ./blog
+          target: /var/www/html
+          ignore:
+            - node_modules/
+            - vendor/
+        - action: rebuild
+          path: ./blog/composer.json
+        - action: rebuild
+          path: ./blog/package.json
 
 volumes:
   mysql_data:

@@ -61,6 +61,7 @@ const formatDate = (isoString: string): string => {
 </script>
 
 <style scoped>
+/* 入力スタイル */
 .add-job-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
@@ -108,6 +109,7 @@ const formatDate = (isoString: string): string => {
   resize: vertical;
 }
 
+/* 表示スタイル */
 .jobs-list {
   margin-top: 1rem;
 }
@@ -133,6 +135,7 @@ const formatDate = (isoString: string): string => {
   gap: 1rem;
   width: 100%;
   margin-bottom: 1rem;
+  color: #555;
 }
 .job-delete {
   display: flex;
